@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "BmlQDkva0qPZN6jI4KrxOXR61po+GoCcz3ubtgZYikkAIHCS+eX+A4zky0tkLpjh2JF1WZxAC/54ofhaM6Q5+g==",
+  "success": true,
+  "projectFilePath": "F:\\Repositories\\Finak\\LogsApi\\Logs.Core\\Logs.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\elect\\.nuget\\packages\\nswag.annotations\\14.0.8\\nswag.annotations.14.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}

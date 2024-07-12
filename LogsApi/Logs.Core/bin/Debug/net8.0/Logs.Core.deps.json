@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Logs.Core/1.0.0": {
+        "dependencies": {
+          "NSwag.Annotations": "14.0.8"
+        },
+        "runtime": {
+          "Logs.Core.dll": {}
+        }
+      },
+      "NSwag.Annotations/14.0.8": {
+        "runtime": {
+          "lib/netstandard2.0/NSwag.Annotations.dll": {
+            "assemblyVersion": "14.0.8.0",
+            "fileVersion": "14.0.8.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Logs.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NSwag.Annotations/14.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BGpmzZhBnAKNQW7FuRhwb2bRPSIJvtXQvEXzpchVLimilW6qhk7Afo4+EYRD879lbHKtVty5zFvBIZqCQfA3/A==",
+      "path": "nswag.annotations/14.0.8",
+      "hashPath": "nswag.annotations.14.0.8.nupkg.sha512"
+    }
+  }
+}
