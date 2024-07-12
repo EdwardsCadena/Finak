@@ -1,0 +1,12 @@
+CREATE DATABASE EventLogsDb;
+
+
+USE EventLogsDb;
+
+
+CREATE TABLE EventLogs (
+    Id INT PRIMARY KEY IDENTITY,
+    Fecha DATETIME NOT NULL,
+    Descripcion NVARCHAR(MAX) NOT NULL,
+    Tipo NVARCHAR(50) NOT NULL
+);
