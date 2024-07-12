@@ -30,7 +30,7 @@ namespace Logs.Controllers
         public async Task<IActionResult> GetEventLogs()
         {
             var eventlogs = await _EventLogRepository.GetEventLogs();
-            var eventlogsdto = _mapper.Map<IEnumerable<EventLogDTOs>>(eventlogs);
+            var eventlogsdto = _mapper.Map<IEnumerable<EventLog>>(eventlogs);
             return Ok(eventlogsdto);
         }
 
@@ -45,27 +45,22 @@ namespace Logs.Controllers
 
         // POST api/<EventLogController>
         [HttpPost("api-event")]
-        [Swashbuckle.AspNetCore.Annotations.SwaggerOperation(
-        Summary = "Registrar un nuevo EventLog desde la API",
-        Description = "Registra un nuevo evento desde la API con fecha y descripción."
-    )]
-        [Swashbuckle.AspNetCore.Annotations.SwaggerResponse(200, "OK", typeof(EventLogDTOs))]
         public async Task<IActionResult> PostEventLog(EventLogDTOs eventLogDto)
         {
             var newEventLog = _mapper.Map<EventLog>(eventLogDto);
             newEventLog.Fecha = DateTime.Now;
-            var tipo = "api";
+            var tipo = "Api";
             await _EventLogRepository.InsertEventLog(newEventLog, tipo);
 
             return Ok(newEventLog);
         }
 
         [HttpPost("manual-event")]
-        public async Task<IActionResult> PostManualEventLog([FromBody] EventLogDTOs eventLogDto)
+        public async Task<IActionResult> PostManualEventLog(EventLogDTOs eventLogDto)
         {
             var newEventLog = _mapper.Map<EventLog>(eventLogDto);
             newEventLog.Fecha = DateTime.Now;
-            var tipo = "manual";
+            var tipo = "Formulario de eventos manuales";
             await _EventLogRepository.InsertEventLog(newEventLog,tipo );
 
             return Ok(newEventLog);

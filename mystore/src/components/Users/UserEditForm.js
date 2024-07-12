@@ -23,7 +23,11 @@ const style = {
 };
 
 const UserEditForm = ({ user, fetchUsers }) => {
-  const [editedUser, setEditedUser] = useState(user);
+  const [editedUser, setEditedUser] = useState({
+    fecha: user.fecha,
+    descripcion: user.descripcion,
+    tipo: user.tipo,
+  });
   const [open, setOpen] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
@@ -34,7 +38,7 @@ const UserEditForm = ({ user, fetchUsers }) => {
 
   const updateUser = async () => {
     try {
-      await axios.patch(`http://localhost:9000/api/EventLog/${editedUser.id}`, editedUser);
+      await axios.put(`https://localhost:7255/api/EventLog/${user.id}`, editedUser);
       fetchUsers();
       handleClose();
       setShowAlert(true);
@@ -51,7 +55,9 @@ const UserEditForm = ({ user, fetchUsers }) => {
 
   return (
     <div>
-      <Button variant="contained" color="primary" onClick={handleOpen} startIcon={<EditIcon />}>Edit</Button>
+      <Button variant="contained" color="primary" onClick={handleOpen} startIcon={<EditIcon />}>
+        Edit
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -63,22 +69,33 @@ const UserEditForm = ({ user, fetchUsers }) => {
             Edit User
           </Typography>
           <TextField
-            name="name"
-            label="Name"
-            value={editedUser.name}
+            name="descripcion"
+            label="Description"
+            value={editedUser.descripcion}
             onChange={handleInputChange}
             fullWidth
             sx={{ mt: 2 }}
+          />
+          {/* Campo tipo oculto */}
+          <TextField
+            name="tipo"
+            type="hidden"
+            value={editedUser.tipo}
+            onChange={handleInputChange}
           />
           <TextField
-            name="email"
-            label="Email"
-            value={editedUser.email}
+            name="fecha"
+            label="Date"
+            type="date"
+            value={editedUser.fecha}
             onChange={handleInputChange}
             fullWidth
             sx={{ mt: 2 }}
+            InputLabelProps={{ shrink: true }}
           />
-          <Button variant="contained" color="primary" onClick={updateUser} sx={{ mt: 2 }}>Save</Button>
+          <Button variant="contained" color="primary" onClick={updateUser} sx={{ mt: 2 }}>
+            Save
+          </Button>
         </Box>
       </Modal>
       {showAlert && (

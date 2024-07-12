@@ -13,7 +13,7 @@ namespace Logs.Core.DTOs
 
         public string Descripcion { get; set; } = null!;
 
-        [SwaggerIgnore]
+        
         public string Tipo { get; set; }
     }
 }

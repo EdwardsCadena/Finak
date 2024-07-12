@@ -50,7 +50,7 @@ const UserTable = ({ users, fetchUsers }) => {
 
   const deleteUser = async (id, descripcion) => {
     try {
-      await axios.delete(`http://localhost:9000/api/EventLog/${id}`);
+      await axios.delete(`https://localhost:7255/api/EventLog/${id}`);
       fetchUsers();
       setDeletedUserName(descripcion);
       setShowAlert(true);

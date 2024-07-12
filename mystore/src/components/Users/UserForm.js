@@ -7,7 +7,7 @@ import Snackbar from '@mui/material/Snackbar';
 const UserForm = ({ fetchUsers }) => {
   const [tipo, setTipo] = useState('');
   const [descripcion, setDescripcion] = useState('');
-  const [fecha, setFecha] = useState(''); // Nuevo estado para la fecha
+  const [fecha, setFecha] = useState('');
   const [showAlert, setShowAlert] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -33,17 +33,9 @@ const UserForm = ({ fetchUsers }) => {
       <h1>Register</h1>
       <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <TextField
-              id="filled-name-input"
-              label="Type"
-              type="text"
-              value={tipo}
-              onChange={(e) => setTipo(e.target.value)}
-              variant="filled"
-              fullWidth
-            />
-          </Grid>
+          {/* Campo oculto para tipo */}
+          <input type="hidden" value={tipo} onChange={(e) => setTipo(e.target.value)} />
+
           <Grid item xs={12}>
             <TextField
               id="filled-email-input"
@@ -64,7 +56,7 @@ const UserForm = ({ fetchUsers }) => {
               onChange={(e) => setFecha(e.target.value)}
               variant="filled"
               fullWidth
-              InputLabelProps={{ shrink: true }} // Para que el label no flote encima al haber texto
+              InputLabelProps={{ shrink: true }}
             />
           </Grid>
           <Grid item xs={12}>
